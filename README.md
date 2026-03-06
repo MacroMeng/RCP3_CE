@@ -1,14 +1,14 @@
-# 随机点名Plus 3 - 智能点名助手
+# 随机点名Plus 3 - 社区版
 
-一个基于PyGame开发的课堂点名工具，支持多种点名模式和概率调整，帮助教师实现公平高效的点名
+一个基于PyGame和PyQt5开发的课堂点名工具，支持多种点名模式和概率调整，帮助教师实现公平高效的点名
 
-![软件截图](https://github.com/user-attachments/assets/9441861e-0761-40be-93e7-a53a8b0b6509)
+#### 这个版本为社区版，由Macrohard-Studio全体成员共同维护
 
 ---
 
 ## 📊 Star History
 
-[![Star History Chart](https://starchart.cc/Macrohard0001/Random_Choice_Plus_3.svg)
+[![Star History Chart](https://starchart.cc/Macrohard-Studio/RCP3_CE.svg)
 
 ---
 
@@ -189,19 +189,8 @@ A: 可尝试降低动画速度、关闭随机背景功能或者降低fps（Pygam
 
 ## 📈 版本更新
 
-### 当前版本：v3.30
-- 优化文件结构，合并部分重复代码
-- 改进智能爆率控制算法
-- 修复配置文件编码问题
-- 增强点名平衡逻辑
+### 当前版本：
 
-### 历史版本亮点
-- **v3.29**：修复初始化加载问题
-- **v3.28**：修复最大化窗口还原问题
-- **v3.27**：优化点名均衡算法
-- **v3.26**：增加独立配置编辑器
-- **v3.25**：增加点名平衡逻辑
-- **v3.24**：新增休眠界面
 
 查看完整更新日志请参考 `updatelog.txt`
 
@@ -222,16 +211,6 @@ A: 可尝试降低动画速度、关闭随机背景功能或者降低fps（Pygam
 
 ---
 
-## 关于新项目（Random_Choice_Plus_4）
-- 我正在用Pygame + ModernGL构建一个极轻量的渲染引擎[Awesome_OpenGL_Render_Engine](https://github.com/Macrohard0001/Awesome_OpenGL_Render_Engine)
-- 新项目RCP_4 （还没创建库……/(ㄒoㄒ)/~~）
-
----
-
-##我正在寻求合作伙伴，有意者请联系Macrohard0001_m01@outlook.com 或直接加入我的组织Macrohard_Studio
-
----
-
 ## 📄 许可证
 
 本项目采用 巨硬简易许可证 开源。允许用于个人用途，但需保留原版权声明；商用需授权；转载请注明来源。
@@ -242,6 +221,6 @@ A: 可尝试降低动画速度、关闭随机背景功能或者降低fps（Pygam
 
 ---
 
-**开发者：** Macrohard0001  
-**文档最后更新：** 2025年12月10日  
+**开发者：** Macrohard-Studio
+**文档最后更新：** 2026年03月07日  
 **项目状态：** 稳定可用，持续维护中
