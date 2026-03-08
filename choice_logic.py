@@ -44,7 +44,7 @@ def randomchoice(flush=True, record_history=True):
         drop_rate_manager.add_history_record(temp)
 
     # 显示结果
-    text = pygame.font.SysFont('MicrosoftYaHei UI', size=int(150 * k)).render(
+    text = get_chinese_font(size=int(150 * k)).render(
         temp, True, (255, 255, 255)
     )
     screen.blit(

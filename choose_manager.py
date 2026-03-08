@@ -1,3 +1,8 @@
+import os
+import json
+from datetime import date
+
+
 class ChooseManager:
     def __init__(self):
         self.history_file = 'choose_history.json'

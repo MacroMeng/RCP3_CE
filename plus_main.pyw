@@ -1,4 +1,72 @@
 import chardet
+import traceback
+
+# 修复 Pygame 2.6.1 Windows 字体注册表 bug
+# 必须在 import pygame 之前执行
+def _patch_pygame_sysfont():
+    """Patch pygame.sysfont to handle non-string values in Windows registry."""
+    import pygame.sysfont
+    from os.path import splitext
+
+    OpenType_extensions = ('.ttf', '.ttc', '.otf', '.otc')
+
+    def _safe_add_font(fonts, name, value):
+        if not isinstance(value, str):
+            return
+        try:
+            ext = splitext(value)[1].lower()
+            if ext in OpenType_extensions:
+                fonts[name] = value
+        except (TypeError, IndexError):
+            pass
+
+    def _patched_initsysfonts_win32():
+        import winreg
+
+        fonts = {}
+
+        try:
+            with winreg.OpenKey(
+                winreg.HKEY_LOCAL_MACHINE,
+                r'Software\Microsoft\Windows NT\CurrentVersion\Fonts',
+            ) as key:
+                for i in range(winreg.QueryInfoKey(key)[1]):
+                    try:
+                        name, value, _ = winreg.EnumValue(key, i)
+                        _safe_add_font(fonts, name, value)
+                    except (OSError, ValueError):
+                        continue
+        except OSError:
+            pass
+
+        try:
+            with winreg.OpenKey(
+                winreg.HKEY_CURRENT_USER,
+                r'Software\Microsoft\Windows NT\CurrentVersion\Fonts',
+            ) as key:
+                for i in range(winreg.QueryInfoKey(key)[1]):
+                    try:
+                        name, value, _ = winreg.EnumValue(key, i)
+                        _safe_add_font(fonts, name, value)
+                    except (OSError, ValueError):
+                        continue
+        except OSError:
+            pass
+
+        return fonts
+
+    pygame.sysfont.initsysfonts_win32 = _patched_initsysfonts_win32
+
+
+_patch_pygame_sysfont()
+
+
+def get_chinese_font(size, bold=False):
+    if not bold:
+        return pygame.font.Font('./fonts/MiSans-Regular.ttf', size)
+    else:
+        return pygame.font.Font('./fonts/MiSans-Bold.ttf', size)
+
 
 global load, screensize
 
@@ -352,9 +420,9 @@ def background():
         )
     except:
         screen.fill((0, 0, 0))
-        errorbackground = pygame.font.SysFont(
-            'MicrosoftYaHei UI', int(20 * k)
-        ).render('加载背景失败，已使用黑色背景', True, (255, 255, 255))
+        errorbackground = get_chinese_font(int(20 * k)).render(
+            '加载背景失败，已使用黑色背景', True, (255, 255, 255)
+        )
         screen.blit(errorbackground, (0, 0))
         pygame.display.update(
             (0, 0, errorbackground.get_width(), errorbackground.get_height())
@@ -363,7 +431,7 @@ def background():
 
 def showclock(flush=True):
     global screen, k, window_width, window_height, clocksurface
-    clock_time = pygame.font.SysFont('MicrosoftYaHei UI', int(30 * k)).render(
+    clock_time = get_chinese_font(int(30 * k)).render(
         datetime.datetime.now().strftime('%H:%M:%S'), True, (255, 255, 255)
     )
     screen.blit(clocksurface, ((window_width - 130 * k), 0))
@@ -382,7 +450,7 @@ def showclock(flush=True):
 
 def draw_lastname(flush=True, temp=False):
     global tempsurface_2, namesurface, k
-    text = pygame.font.SysFont('MicrosoftYaHei UI', size=int(150 * k)).render(
+    text = get_chinese_font(size=int(150 * k)).render(
         lastname, True, (255, 255, 255)
     )
     if temp:
@@ -453,7 +521,7 @@ def message(text, flush=True, temp=False):
     window_width, window_height = pygame.display.get_surface().get_size()
     if text != '':
         window_width, window_height = pygame.display.get_surface().get_size()
-        textfont = pygame.font.SysFont('MicrosoftYaHei UI', int(20 * k))
+        textfont = get_chinese_font(int(20 * k))
         _text_ = textfont.render(text, True, (255, 255, 255))
         size = (_text_.get_width() + 20 * k, _text_.get_height() + 10 * k)
         messagesurface = pygame.Surface(size, SRCALPHA)
@@ -495,6 +563,7 @@ except Exception as e:
 
     # import win32process
     print(f'哎呀！出错啦！\f{e}')
+    print(traceback.format_exc())
     win32gui.MessageBox(
         0, str(e), '哎呀！出错啦！', win32con.MB_OK | win32con.MB_ICONWARNING
     )

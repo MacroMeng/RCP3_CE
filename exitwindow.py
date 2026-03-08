@@ -37,7 +37,7 @@ def exitwindow():
         (0, 0, 480 * k, 180 * k),
         border_radius=int(8 * k),
     )
-    asktext = pygame.font.SysFont('MicrosoftYaHei UI', int(36 * k)).render(
+    asktext = get_chinese_font(int(36 * k)).render(
         '你真的要退出吗？', True, (255, 255, 255)
     )
     exit_window.blit(
@@ -53,9 +53,7 @@ def exitwindow():
         (40 * k, 130 * k, 110 * k, 33 * k),
         border_radius=int(5 * k),
     )
-    text_1 = pygame.font.SysFont('MicrosoftYaHei UI', int(18 * k)).render(
-        '收起', True, (255, 255, 255)
-    )
+    text_1 = get_chinese_font(int(18 * k)).render('收起', True, (255, 255, 255))
     exit_window.blit(
         text_1,
         (
@@ -69,9 +67,7 @@ def exitwindow():
         (175 * k, 130 * k, 110 * k, 33 * k),
         border_radius=int(5 * k),
     )
-    text_2 = pygame.font.SysFont('MicrosoftYaHei UI', int(18 * k)).render(
-        '退出', True, (255, 255, 255)
-    )
+    text_2 = get_chinese_font(int(18 * k)).render('退出', True, (255, 255, 255))
     exit_window.blit(
         text_2,
         (
@@ -85,9 +81,7 @@ def exitwindow():
         (310 * k, 130 * k, 110 * k, 33 * k),
         border_radius=int(5 * k),
     )
-    text_3 = pygame.font.SysFont('MicrosoftYaHei UI', int(18 * k)).render(
-        '取消', True, (255, 255, 255)
-    )
+    text_3 = get_chinese_font(int(18 * k)).render('取消', True, (255, 255, 255))
     exit_window.blit(
         text_3,
         (
@@ -438,9 +432,9 @@ def exitwindow():
                             window_height,
                         ) = pygame.display.get_surface().get_size()
                         k = _k_()
-                        text = pygame.font.SysFont(
-                            'MicrosoftYaHei UI', int(36 * k)
-                        ).render('还没做好呢……   点击任意位置返回~', True, (255, 255, 255))
+                        text = get_chinese_font(int(36 * k)).render(
+                            '还没做好呢……   点击任意位置返回~', True, (255, 255, 255)
+                        )
                         mask = pygame.Surface(
                             (screen.get_width(), screen.get_height()), SRCALPHA
                         )
@@ -589,9 +583,9 @@ def exitwindow():
                             (0, 0, 480 * k, 180 * k),
                             border_radius=int(8 * k),
                         )
-                        asktext = pygame.font.SysFont(
-                            'MicrosoftYaHei UI', int(36 * k)
-                        ).render('你真的要退出吗？', True, (255, 255, 255))
+                        asktext = get_chinese_font(int(36 * k)).render(
+                            '你真的要退出吗？', True, (255, 255, 255)
+                        )
                         exit_window.blit(
                             asktext,
                             (
@@ -611,9 +605,9 @@ def exitwindow():
                             (40 * k, 130 * k, 110 * k, 33 * k),
                             border_radius=int(5 * k),
                         )
-                        text_1 = pygame.font.SysFont(
-                            'MicrosoftYaHei UI', int(18 * k)
-                        ).render('收起', True, (255, 255, 255))
+                        text_1 = get_chinese_font(int(18 * k)).render(
+                            '收起', True, (255, 255, 255)
+                        )
                         exit_window.blit(
                             text_1,
                             (
@@ -632,9 +626,9 @@ def exitwindow():
                             (175 * k, 130 * k, 110 * k, 33 * k),
                             border_radius=int(5 * k),
                         )
-                        text_2 = pygame.font.SysFont(
-                            'MicrosoftYaHei UI', int(18 * k)
-                        ).render('退出', True, (255, 255, 255))
+                        text_2 = get_chinese_font(int(18 * k)).render(
+                            '退出', True, (255, 255, 255)
+                        )
                         exit_window.blit(
                             text_2,
                             (
@@ -654,9 +648,9 @@ def exitwindow():
                             (310 * k, 130 * k, 110 * k, 33 * k),
                             border_radius=int(5 * k),
                         )
-                        text_3 = pygame.font.SysFont(
-                            'MicrosoftYaHei UI', int(18 * k)
-                        ).render('取消', True, (255, 255, 255))
+                        text_3 = get_chinese_font(int(18 * k)).render(
+                            '取消', True, (255, 255, 255)
+                        )
                         exit_window.blit(
                             text_3,
                             (

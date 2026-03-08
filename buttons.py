@@ -110,9 +110,7 @@ def draw_button(
         border_radius=rad,
     )
     buttonsurface.blit(
-        pygame.font.SysFont('MicrosoftYaHei UI', sizeoftext).render(
-            text, True, (255, 255, 255)
-        ),
+        get_chinese_font(sizeoftext).render(text, True, (255, 255, 255)),
         (
             (size[0] - sizeoftext * len(text)) / 2,
             ((size[1] - sizeoftext * 3 / 2) / 2),

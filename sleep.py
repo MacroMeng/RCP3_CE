@@ -136,13 +136,13 @@ def sleep():
     scale_bg()
     mask = pygame.Surface((screen.get_width(), screen.get_height()), SRCALPHA)
     mask.fill((0, 0, 0, sleep_background_alpha))
-    sleeptext1 = pygame.font.SysFont('SIMHEI', int(48 * k)).render(
+    sleeptext1 = get_chinese_font(int(48 * k)).render(
         '系统已进入休眠模式', True, (255, 255, 255)
     )
-    sleeptext2 = pygame.font.SysFont('Kaiti', int(36 * k)).render(
+    sleeptext2 = get_chinese_font(int(36 * k)).render(
         '点击任意位置唤醒', True, (255, 255, 255)
     )
-    adtext = pygame.font.SysFont('SIMSUN', int(24 * k)).render(
+    adtext = get_chinese_font(int(24 * k)).render(
         '广告位招租，有意者联系Macrohard0001_m01@outlook.com', True, (255, 255, 255)
     )
     sleep_control = True

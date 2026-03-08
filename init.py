@@ -1,3 +1,13 @@
+import pygame
+
+
+def get_chinese_font(size, bold=False):
+    if not bold:
+        return pygame.font.Font('./fonts/MiSans-Regular.ttf', size)
+    else:
+        return pygame.font.Font('./fonts/MiSans-Bold.ttf', size)
+
+
 def init():
     global MHicon, initbarsurface, screen, lastlength, init_background, mask, currentamount
     global choose_manager, drop_rate_manager, choose_mode, balance_weight, smart_sensitivity, enable_drop_rate
@@ -123,9 +133,7 @@ def init():
         (int(MHicon.get_width() * 0.08), int(MHicon.get_height() * 0.08)),
     )
     mask.blit(MHicon, ((mask.get_width() - MHicon.get_width()) / 2, 0))
-    MHtext = pygame.font.SysFont('MicrosoftYaHei UI', size=int(33)).render(
-        ' ', True, (255, 255, 255)
-    )
+    MHtext = get_chinese_font(size=int(33)).render(' ', True, (255, 255, 255))
     mask.blit(
         MHtext,
         (
@@ -138,9 +146,9 @@ def init():
     pygame.time.Clock().tick(1)
 
     screen.blit(init_background, (0, 0))
-    softwaretext = pygame.font.SysFont(
-        'MicrosoftYaHei UI', size=int(40), bold=True
-    ).render(packagename, True, (255, 255, 255))
+    softwaretext = get_chinese_font(size=int(40), bold=True).render(
+        packagename, True, (255, 255, 255)
+    )
     mask.blit(
         softwaretext,
         (
@@ -148,9 +156,9 @@ def init():
             MHicon.get_height() + MHtext.get_height() - 25,
         ),
     )
-    versiontext = pygame.font.SysFont(
-        'MicrosoftYaHei UI', size=int(20), bold=True
-    ).render(version, True, (255, 255, 255))
+    versiontext = get_chinese_font(size=int(20), bold=True).render(
+        version, True, (255, 255, 255)
+    )
     mask.blit(
         versiontext,
         (
@@ -192,17 +200,17 @@ def init():
         pygame.event.get()
     screen.blit(init_background, (0, 0))
     screen.blit(mask, (0, 0))
-    loadingpercent = pygame.font.SysFont(
-        'MicrosoftYaHei UI', size=int(15)
-    ).render(('100.00%'), True, (255, 255, 255))
+    loadingpercent = get_chinese_font(size=int(15)).render(
+        ('100.00%'), True, (255, 255, 255)
+    )
     screen.blit(
         loadingpercent,
         ((screen.get_width() - 720) / 2 + 730, screen.get_height() / 2 + 140),
     )
     ldtext = '已完成！正在载入……'
-    loadingtext = pygame.font.SysFont(
-        'MicrosoftYaHei UI', size=int(15)
-    ).render(ldtext, True, (255, 255, 255))
+    loadingtext = get_chinese_font(size=int(15)).render(
+        ldtext, True, (255, 255, 255)
+    )
     screen.blit(
         loadingtext,
         ((screen.get_width() - 720) / 2, screen.get_height() / 2 + 160),
@@ -380,9 +388,9 @@ def init_items(num, total, totalamount, animation):
             screen.blit(init_background, (0, 0))
             screen.blit(mask, (0, 0))
             ldtext = '载入全局变量……'
-            loadingtext = pygame.font.SysFont(
-                'MicrosoftYaHei UI', size=int(15)
-            ).render(ldtext, True, (255, 255, 255))
+            loadingtext = get_chinese_font(size=int(15)).render(
+                ldtext, True, (255, 255, 255)
+            )
             screen.blit(
                 loadingtext,
                 (
@@ -408,9 +416,9 @@ def init_items(num, total, totalamount, animation):
             screen.blit(init_background, (0, 0))
             screen.blit(mask, (0, 0))
             ldtext = '读取背景……'
-            loadingtext = pygame.font.SysFont(
-                'MicrosoftYaHei UI', size=int(15)
-            ).render(ldtext, True, (255, 255, 255))
+            loadingtext = get_chinese_font(size=int(15)).render(
+                ldtext, True, (255, 255, 255)
+            )
             screen.blit(
                 loadingtext,
                 (
@@ -428,9 +436,9 @@ def init_items(num, total, totalamount, animation):
             screen.blit(init_background, (0, 0))
             screen.blit(mask, (0, 0))
             ldtext = '设定窗口……'
-            loadingtext = pygame.font.SysFont(
-                'MicrosoftYaHei UI', size=int(15)
-            ).render(ldtext, True, (255, 255, 255))
+            loadingtext = get_chinese_font(size=int(15)).render(
+                ldtext, True, (255, 255, 255)
+            )
             screen.blit(
                 loadingtext,
                 (
@@ -462,9 +470,9 @@ def init_items(num, total, totalamount, animation):
             screen.blit(init_background, (0, 0))
             screen.blit(mask, (0, 0))
             ldtext = '计算比例系数……'
-            loadingtext = pygame.font.SysFont(
-                'MicrosoftYaHei UI', size=int(15)
-            ).render(ldtext, True, (255, 255, 255))
+            loadingtext = get_chinese_font(size=int(15)).render(
+                ldtext, True, (255, 255, 255)
+            )
             screen.blit(
                 loadingtext,
                 (
@@ -503,9 +511,9 @@ def init_items(num, total, totalamount, animation):
             screen.blit(init_background, (0, 0))
             screen.blit(mask, (0, 0))
             ldtext = '创建表面……'
-            loadingtext = pygame.font.SysFont(
-                'MicrosoftYaHei UI', size=int(15)
-            ).render(ldtext, True, (255, 255, 255))
+            loadingtext = get_chinese_font(size=int(15)).render(
+                ldtext, True, (255, 255, 255)
+            )
             screen.blit(
                 loadingtext,
                 (
@@ -522,9 +530,9 @@ def init_items(num, total, totalamount, animation):
             screen.blit(init_background, (0, 0))
             screen.blit(mask, (0, 0))
             ldtext = '创建变量……'
-            loadingtext = pygame.font.SysFont(
-                'MicrosoftYaHei UI', size=int(15)
-            ).render(ldtext, True, (255, 255, 255))
+            loadingtext = get_chinese_font(size=int(15)).render(
+                ldtext, True, (255, 255, 255)
+            )
             screen.blit(
                 loadingtext,
                 (
@@ -533,29 +541,47 @@ def init_items(num, total, totalamount, animation):
                 ),
             )
         case 6:
-            try:
-                with open(name_text, 'r') as namelist:
-                    _name_ = [
-                        line.strip() for line in namelist if line.strip()
-                    ]
-            except:
-                _name_ = ['error0001']
-                print('主名单加载错误')  # 防止崩溃
-            try:
-                with open(except_names, 'r') as exceptnamelist:
-                    except_name = [
-                        line.strip() for line in exceptnamelist if line.strip()
-                    ]
-            except:
-                globals()['except_name'] = ['error0002']
-                print('排除名单加载错误')  # 防止崩溃
+
+            def read_name_file(filepath, default_error):
+                if not os.path.exists(filepath):
+                    print(f'文件不存在: {filepath}')
+                    return [default_error]
+                encodings = ['utf-8', 'gbk', 'gb2312', 'utf-16', 'latin-1']
+                for encoding in encodings:
+                    try:
+                        with open(filepath, 'r', encoding=encoding) as f:
+                            result = [
+                                line.strip() for line in f if line.strip()
+                            ]
+                        if result:
+                            print(f'成功使用 {encoding} 编码读取: {filepath}')
+                            return result
+                    except (UnicodeDecodeError, Exception) as e:
+                        continue
+                try:
+                    with open(
+                        filepath, 'r', encoding='utf-8', errors='ignore'
+                    ) as f:
+                        result = [line.strip() for line in f if line.strip()]
+                    print(f'使用错误忽略模式读取: {filepath}')
+                    return result
+                except Exception as e:
+                    print(f'读取文件失败 {filepath}: {e}')
+                    return [default_error]
+
+            _name_ = read_name_file(name_text, 'error0001')
+            if _name_ == ['error0001']:
+                print('主名单加载错误')
+            except_name = read_name_file(except_names, 'error0002')
+            if except_name == ['error0002']:
+                print('排除名单加载错误')
             currentamount += 14
             screen.blit(init_background, (0, 0))
             screen.blit(mask, (0, 0))
             ldtext = '读取名单和功能模块……'
-            loadingtext = pygame.font.SysFont(
-                'MicrosoftYaHei UI', size=int(15)
-            ).render(ldtext, True, (255, 255, 255))
+            loadingtext = get_chinese_font(size=int(15)).render(
+                ldtext, True, (255, 255, 255)
+            )
             screen.blit(
                 loadingtext,
                 (
@@ -578,9 +604,9 @@ def init_items(num, total, totalamount, animation):
             currentlength = 4
         screen.blit(init_background, (0, 0))
         screen.blit(mask, (0, 0))
-        loadingtext = pygame.font.SysFont(
-            'MicrosoftYaHei UI', size=int(15)
-        ).render(ldtext, True, (255, 255, 255))
+        loadingtext = get_chinese_font(size=int(15)).render(
+            ldtext, True, (255, 255, 255)
+        )
         screen.blit(
             loadingtext,
             ((screen.get_width() - 720) / 2, screen.get_height() / 2 + 160),
@@ -596,9 +622,7 @@ def init_items(num, total, totalamount, animation):
             ),
             border_radius=2,
         )
-        loadingpercent = pygame.font.SysFont(
-            'MicrosoftYaHei UI', size=int(15)
-        ).render(
+        loadingpercent = get_chinese_font(size=int(15)).render(
             (str('%.2f' % (currentlength * 100 / 720)) + '%'),
             True,
             (255, 255, 255),
@@ -625,9 +649,7 @@ def init_items(num, total, totalamount, animation):
                 ),
                 border_radius=2,
             )
-            loadingpercent = pygame.font.SysFont(
-                'MicrosoftYaHei UI', size=int(15)
-            ).render(
+            loadingpercent = get_chinese_font(size=int(15)).render(
                 (str('%.2f' % (currentlength * 100 / 720)) + '%'),
                 True,
                 (255, 255, 255),
@@ -646,9 +668,9 @@ def init_items(num, total, totalamount, animation):
     else:
         screen.blit(init_background, (0, 0))
         screen.blit(mask, (0, 0))
-        loadingtext = pygame.font.SysFont(
-            'MicrosoftYaHei UI', size=int(15)
-        ).render(ldtext, True, (255, 255, 255))
+        loadingtext = get_chinese_font(size=int(15)).render(
+            ldtext, True, (255, 255, 255)
+        )
         screen.blit(
             loadingtext,
             ((screen.get_width() - 720) / 2, screen.get_height() / 2 + 160),
@@ -664,9 +686,7 @@ def init_items(num, total, totalamount, animation):
             ),
             border_radius=2,
         )
-        loadingpercent = pygame.font.SysFont(
-            'MicrosoftYaHei UI', size=int(15)
-        ).render(
+        loadingpercent = get_chinese_font(size=int(15)).render(
             (str('%.2f' % (currentlength * 100 / 720)) + '%'),
             True,
             (255, 255, 255),

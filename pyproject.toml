@@ -1,6 +1,6 @@
 [project]
 name = "rcp3-ce"
-version = "0.1.0"
+version = "3.32"
 description = "随机点名Plus3_社区版"
 readme = "README.md"
 requires-python = ">=3.13"
