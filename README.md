@@ -15,6 +15,7 @@
 ## ✨ 核心功能
 
 ### 🎯 点名模式
+
 - **简单随机**：纯随机点名，可能重复
 - **单次不重复**：一轮内不重复点名
 - **历史不重复**：避免重复点到历史中被点过的人
@@ -22,17 +23,20 @@
 - **今日平衡**：优先选择今日未被点到的学生
 
 ### ⚙️ 概率系统
+
 - 可手动调整单个学生的"中奖概率"
 - 支持自动根据点名历史调整概率
 - 手动配置优先级高于自动计算
 
 ### 🎨 界面特性
+
 - 响应式布局，适配不同屏幕尺寸
 - 简洁直观的界面设计
 - 支持全屏/窗口模式切换
 - 右上角显示实时时钟
 
 ### 🔄 工作模式
+
 - 主窗口模式：完整的点名界面
 - 悬浮按钮模式：最小化为系统托盘按钮
 - 休眠模式：闲置后自动进入低功耗状态
@@ -42,32 +46,36 @@
 ## 🚀 快速开始
 
 ### 环境要求
-```bash
-Python 3.7 或更高版本
-Windows 系统（推荐 Windows 10/11）
-```
+
+- Python 3.13 或更高版本
+- Windows 10+ 系统
 
 ### 安装步骤
-1. 安装依赖库：
-```bash
-pip install pygame pywin32 PyQt5 chardet
-```
 
-2. 准备学生名单：
+1. 安装 uv
+   从 [uv 官方网站](https://github.com/astral-sh/uv) 下载并安装最新版本的 uv
+2. 安装依赖库：
+
+   ```bash
+   uv init
+   uv sync
+   uv pip install pyqt5  # 需要额外安装 PyQt5 库
+   ```
+
+3. 准备学生名单：
    - 编辑 `name.txt` 文件，每行一个学生姓名
    - 如需排除某些学生，可编辑 `name_except.txt`
+4. 运行程序：
 
-3. 运行程序：
-```bash
-python plus_main.pyw
-```
-或直接双击 `plus_main.pyw` 文件
+   ```bash
+   uv run plus_main.pyw
+   ```
 
 ---
 
 ## 📁 文件结构
 
-```
+```tree
 random_chooser_plus/
 ├── plus_main.pyw              # 主程序入口
 ├── config.ini                 # 配置文件
@@ -86,6 +94,7 @@ random_chooser_plus/
 ```
 
 ### 主要模块说明
+
 - **`plus_main.pyw`**：程序主入口，负责窗口管理和事件处理
 - **`choice_logic.py`**：包含各种点名算法的核心逻辑
 - **`choose_manager.py`**：管理点名历史和统计数据
@@ -100,6 +109,7 @@ random_chooser_plus/
 ## ⚙️ 配置说明
 
 ### 主要配置项
+
 ```ini
 [chooser]
 choose_mode = smart_balance      # 点名模式
@@ -116,6 +126,7 @@ sleep_time_delay = 30          # 休眠等待时间（秒）
 ```
 
 ### 点名模式详解
+
 | 模式 | 说明 | 适用场景 |
 |------|------|----------|
 | `repeat` | 纯随机点名，可重复 | 快速提问，不关心重复 |
@@ -130,14 +141,16 @@ sleep_time_delay = 30          # 休眠等待时间（秒）
 ## 🔧 使用技巧
 
 ### 基础使用
-1. **启动程序**：双击 `plus_main.pyw`
+
+1. **启动程序**：`uv run plus_main.pyw`
 2. **开始点名**：点击界面中的"抽选"按钮
 3. **查看结果**：屏幕中央显示被点到的学生
 4. **重置名单**：名单用完后点击"重置"按钮恢复
 
 ### 高级功能
+
 1. **调整概率**：
-   - 运行 `python config_editor.py` 打开配置编辑器
+   - 运行 `uv run config_editor.py` 打开配置编辑器
    - 在"点名设置"标签页中点击"编辑爆率配置"
    - 可单独设置每个学生的点名概率
 
@@ -145,7 +158,7 @@ sleep_time_delay = 30          # 休眠等待时间（秒）
    - 点击退出界面中的"收起"按钮
    - 程序会最小化为悬浮按钮
    - 点击悬浮按钮可快速恢复窗口
-  ** 注意：打包后此功能可能存在bug **
+  **注意：打包后此功能可能存在bug**
 
 3. **休眠唤醒**：
    - 程序闲置30秒后自动进入休眠
@@ -153,6 +166,7 @@ sleep_time_delay = 30          # 休眠等待时间（秒）
    - 休眠界面显示当前时间和唤醒提示
 
 ### 数据管理
+
 - **查看历史**：配置编辑器中可查看点名历史记录
 - **重置数据**：可单独重置今日记录或全部历史
 - **导出名单**：学生名单为纯文本格式，便于编辑
@@ -162,16 +176,21 @@ sleep_time_delay = 30          # 休眠等待时间（秒）
 ## 🐛 常见问题
 
 ### 启动问题
+
 **Q: 程序无法启动，提示缺少模块**
 A: 请确保已安装所有依赖：
+
 ```bash
-pip install pygame pywin32 PyQt5 chardet
+uv init
+uv sync
+uv pip install pyqt5  # 需要额外安装 PyQt5 库s
 ```
 
 **Q: 找不到学生名单**
-A: 确保项目目录下有 `name.txt` 文件，且文件编码为UTF-8或GBK
+A: 确保项目目录下有 `name.txt` 文件，且文件编码为 UTF-8 或 GBK
 
 ### 使用问题
+
 **Q: 点名时没有动画效果**
 A: 检查配置文件中的 `animation = True` 设置
 
@@ -182,6 +201,7 @@ A: 确保配置中 `enable_drop_rate = True` 且 `use_manual_override = True`
 A: 程序可能已打包为悬浮按钮，检查系统托盘区
 
 ### 性能问题
+
 **Q: 程序运行卡顿**
 A: 可尝试降低动画速度、关闭随机背景功能或者降低fps（Pygame的软件渲染就是sh*t）
 
@@ -189,8 +209,7 @@ A: 可尝试降低动画速度、关闭随机背景功能或者降低fps（Pygam
 
 ## 📈 版本更新
 
-### 当前版本：
-
+### 当前版本
 
 查看完整更新日志请参考 `updatelog.txt`
 
@@ -206,7 +225,7 @@ A: 可尝试降低动画速度、关闭随机背景功能或者降低fps（Pygam
 
 ### 联系开发者
 
-- 📧 邮箱：Macrohard0001_m01@outlook.com
+- 📧 邮箱：[Macrohard0001_m01@outlook.com](mailto:Macrohard0001_m01@outlook.com)
 - 🐛 GitHub Issues：[提交问题](https://github.com/Macrohard0001/Random_Choice_Plus_3/issues)
 
 ---
