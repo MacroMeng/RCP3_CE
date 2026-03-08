@@ -1,0 +1,9 @@
+【测试环境】 python3.13.3
+【理论 】python3即可
+
+
+【库】
+pip install pygame 
+pip install chardet 
+pip install pyqt5 
+pip install pywin32
